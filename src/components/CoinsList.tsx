@@ -2,16 +2,16 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import SearchForm from "./SearchForm";
-import { CoinType } from "~/lib/CoinType";
 import CoinRow from "./CoinRow";
-import { dummy_coins } from "~/lib/dummy_data";
 import Link from "next/link";
 import { Divider, Grid } from "@mui/material";
+import useCoin from "~/providers/useCoin";
 
 interface CoinsListProps {}
 
 const CoinsList: React.FC<CoinsListProps> = ({}) => {
-  const [coins, setCoins] = useState<CoinType[]>(dummy_coins as CoinType[]);
+  const { coins, setCoins } = useCoin();
+  
   const [searchString, setSearchString] = useState<string>("");
 
   // useEffect(() => {
@@ -29,14 +29,14 @@ const CoinsList: React.FC<CoinsListProps> = ({}) => {
     coin.name.toLowerCase().includes(searchString.toLowerCase()),
   );
   return (
-    <div className="mx-auto flex w-screen flex-col items-center justify-center">
+    <div className="mx-auto flex w-full flex-col items-center justify-center">
       <div className="flex w-full justify-center">
         <SearchForm
           searchString={searchString}
           setSearchString={setSearchString}
         />
       </div>
-      <div className="w-full px-24">
+      <div className="w-full px-24 max-sm:px-4">
         <Grid
           container
           direction="row"
@@ -55,16 +55,16 @@ const CoinsList: React.FC<CoinsListProps> = ({}) => {
           <Grid item xs={2}>
             <p>Price</p>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className="max-md:sr-only">
             <p>Volume</p>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} className="max-md:sr-only">
             <p>Market Cap</p>
           </Grid>
         </Grid>
         <Divider />
       </div>
-      <ul className="flex w-full flex-col items-center px-24">
+      <ul className="flex w-full flex-col items-center px-24 max-sm:px-4">
         {filteredCoins.map((coin) => (
           <Link href={`/coins/${coin.id}`} key={coin.id} className="w-full">
             <CoinRow coin={coin} />

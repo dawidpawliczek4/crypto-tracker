@@ -15,7 +15,10 @@ const TopNav: React.FC<TopNavProps> = ({}) => {
           <SignInButton />
         </SignedOut>
         <SignedIn>
+          <div className="flex flex-row gap-4 items-center">
+          <Link href="/portfolio">Portfolio</Link>
           <UserButton />
+          </div>
         </SignedIn>
       </div>
     </nav>

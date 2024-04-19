@@ -31,6 +31,7 @@ const CoinRow: React.FC<CoinRowProps> = ({ coin }) => {
         <Grid item>
           <p>{coin.market_cap_rank}</p>
         </Grid>
+
         <Grid item xs={3}>
           <div className="flex items-center gap-x-2">
             <img src={coin.image} alt={coin.name} className="h-6 w-6" />
@@ -41,10 +42,10 @@ const CoinRow: React.FC<CoinRowProps> = ({ coin }) => {
         <Grid item xs={2}>
           <p>${coin.current_price}</p>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={2} className="max-md:sr-only">
           <p>{total_volume_formatted}</p>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={1} className="max-md:sr-only">
           <p>{market_cap_formatted}</p>
         </Grid>
       </Grid>

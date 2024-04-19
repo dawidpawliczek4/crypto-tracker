@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import TopNav from "~/components/TopNav";
 import { ThemeProvider } from "@mui/material";
 import theme from "~/lib/theme";
+import { CoinProvider } from "~/providers/CoinContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,8 +29,10 @@ export default function RootLayout({
         <body className={`font-sans ${inter.variable}`}>
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
-              <TopNav />
-              {children}
+              <CoinProvider>
+                <TopNav />
+                {children}
+              </CoinProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </body>
