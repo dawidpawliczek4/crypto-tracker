@@ -6,7 +6,7 @@ interface TopNavProps {}
 
 const TopNav: React.FC<TopNavProps> = ({}) => {
   return (
-    <nav className="flex w-full items-center justify-between border-b p-4">
+    <nav className="flex w-full items-center justify-between border-b-[1px] border-b-white/50 p-4">
       <Link href="/">
         <h1>Crypto Tracker</h1>
       </Link>

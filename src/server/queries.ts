@@ -67,3 +67,17 @@ export const addCoin = async (coinId: string, quantity: number) => {
 
   revalidatePath("/portfolio");
 };
+
+
+export const deleteCoin = async (coinId: string) => {
+  const user = await authorizeUser();
+
+  await prisma.coin.deleteMany({
+    where: {
+      coinId: coinId,
+      userId: user.userId,
+    },
+  });  
+
+  revalidatePath("/portfolio");
+}

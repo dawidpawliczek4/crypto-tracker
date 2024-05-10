@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import SearchForm from "./SearchForm";
+import SearchForm from "../SearchForm";
 import CoinRow from "./CoinRow";
 import Link from "next/link";
 import { Divider, Grid } from "@mui/material";
@@ -14,16 +14,16 @@ const CoinsList: React.FC<CoinsListProps> = ({}) => {
   
   const [searchString, setSearchString] = useState<string>("");
 
-  // useEffect(() => {
-  //   const fetchCoins = async () => {
-  //     const response = await fetch(
-  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
-  //     );
-  //     const data = await response.json();
-  //     setCoins(data);
-  //   };
-  //   fetchCoins();
-  // }, []);
+  useEffect(() => {
+    const fetchCoins = async () => {
+      const response = await fetch(
+        "/api/coins"
+      );
+      const data = await response.json();
+      setCoins(data);
+    };
+    fetchCoins();
+  }, []);
 
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(searchString.toLowerCase()),

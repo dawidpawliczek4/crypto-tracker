@@ -2,10 +2,11 @@ import "~/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import TopNav from "~/components/TopNav";
+import { CoinProvider } from "~/providers/CoinContext";
 import { ThemeProvider } from "@mui/material";
 import theme from "~/lib/theme";
-import { CoinProvider } from "~/providers/CoinContext";
+import TopNav from "~/components/TopNav";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +33,16 @@ export default function RootLayout({
               <CoinProvider>
                 <TopNav />
                 {children}
+                <Toaster
+                  theme="dark"
+                  toastOptions={{
+                    classNames: {
+                      toast: "bg-slate-900",
+                      title: "text-white",
+                      description: "text-white",
+                    },
+                  }}
+                />
               </CoinProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
