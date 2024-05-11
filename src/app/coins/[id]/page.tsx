@@ -8,12 +8,12 @@ interface CoinDetailsPageProps {
 
 const CoinDetailsPage: React.FC<CoinDetailsPageProps> = async ({ params }) => {
   const id = params.id;
-  const coinInfo = await fetchCoinInfo(id);
+  const coinInfo: any = await fetchCoinInfo(id);
 
   return (
     <div>
       <p>{id}</p>
-      <p>{coinInfo.description.en}</p>
+      <p>{coinInfo?.description?.en}</p>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { fetchCoinsData } from "~/server/server";
 
 export async function GET() {
-  fetchCoinsData();
+  await fetchCoinsData();
   return Response.json({ message: "Fetching data" });
 }
