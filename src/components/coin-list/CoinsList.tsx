@@ -6,10 +6,9 @@ import CoinRow from "./CoinRow";
 import Link from "next/link";
 import { Divider, Grid } from "@mui/material";
 import useCoin from "~/providers/useCoin";
+import { CoinType } from "~/lib/CoinType";
 
-interface CoinsListProps {}
-
-const CoinsList: React.FC<CoinsListProps> = ({}) => {
+const CoinsList: React.FC = () => {
   const { coins, setCoins } = useCoin();
   
   const [searchString, setSearchString] = useState<string>("");
@@ -19,10 +18,13 @@ const CoinsList: React.FC<CoinsListProps> = ({}) => {
       const response = await fetch(
         "/api/coins"
       );
-      const data = await response.json();
+      const data: CoinType[] = await response.json();
       setCoins(data);
     };
-    fetchCoins();
+    fetchCoins()
+    .catch((error) => {
+      console.error("Error fetching coins", error);
+    })
   }, []);
 
   const filteredCoins = coins.filter((coin) =>

@@ -2,9 +2,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
-interface TopNavProps {}
-
-const TopNav: React.FC<TopNavProps> = ({}) => {
+const TopNav: React.FC = () => {
   return (
     <nav className="flex w-full items-center justify-between border-b-[1px] border-b-white/50 p-4">
       <Link href="/">

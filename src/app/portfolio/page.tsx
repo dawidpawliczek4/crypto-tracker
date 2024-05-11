@@ -4,9 +4,7 @@ import AddTransaction from "../../components/portfolio/AddTransaction";
 import PortfolioCoin from "~/components/portfolio/PortfolioCoin";
 import Header from "../../components/portfolio/Header";
 
-interface pageProps {}
-
-const page: React.FC<pageProps> = async ({}) => {
+const page: React.FC = async () => {
   const portfolioCoins = await getCoins();
 
   return (
@@ -19,7 +17,7 @@ const page: React.FC<pageProps> = async ({}) => {
         <div className="flex flex-col gap-6 w-2/3">
           <p className="text-xl border-b-[1px] pb-2 border-b-white/30">Assets</p>
           {portfolioCoins.map((coin) => (
-            <PortfolioCoin id={coin.coinId} quantity={coin.quantity} />
+            <PortfolioCoin id={coin.coinId} quantity={coin.quantity} key={coin.coinId} />
           ))}
         </div>
       </div>

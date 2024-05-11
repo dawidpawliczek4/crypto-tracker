@@ -12,9 +12,7 @@ import useCoin from "~/providers/useCoin";
 import SelectItem from "./SelectItem";
 import { toast } from "sonner";
 
-interface AddTransactionProps {}
-
-const AddTransaction: React.FC<AddTransactionProps> = ({}) => {
+const AddTransaction: React.FC = ({}) => {
   const { coins } = useCoin();
 
   const [quantity, setQuantity] = useState(1);

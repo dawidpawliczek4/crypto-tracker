@@ -13,14 +13,14 @@ const CoinDetailsPage: React.FC<CoinDetailsPageProps> = async ({ params }) => {
   return (
     <div>
       <p>{id}</p>
-      <p>{coinInfo?.description?.en}</p>
+      <p>{coinInfo?.description?.en ?? "Error"}</p>
     </div>
   );
 };
 
 const fetchCoinInfo = async (id: string) => {
   const response = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
-  const data = await response.json();
+  const data: any = await response.json();
   return data;
 };
 
