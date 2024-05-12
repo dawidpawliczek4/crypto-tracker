@@ -1,14 +1,14 @@
 'use client'
-import { createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 import { CoinType } from "~/lib/CoinType";
 import { dummy_coins } from "~/lib/dummy_data";
 
 export const CoinContext = createContext<{
   coins: CoinType[];
-  setCoins: (coins: CoinType[]) => void;
+  setCoins: Dispatch<SetStateAction<CoinType[]>>
 }>({
-  coins: [],
-  setCoins: () => {},
+  coins: [],  
+  setCoins: () => { /* default value */ },
 });
 
 interface CoinProviderProps {

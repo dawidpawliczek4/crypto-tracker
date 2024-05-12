@@ -6,9 +6,15 @@ interface CoinDetailsPageProps {
   };
 }
 
+type CoinInfo = {
+  description?: {
+    en?: string;
+  };
+};
+
 const CoinDetailsPage: React.FC<CoinDetailsPageProps> = async ({ params }) => {
   const id = params.id;
-  const coinInfo: any = await fetchCoinInfo(id);
+  const coinInfo: CoinInfo = await fetchCoinInfo(id);
 
   return (
     <div>
@@ -20,7 +26,7 @@ const CoinDetailsPage: React.FC<CoinDetailsPageProps> = async ({ params }) => {
 
 const fetchCoinInfo = async (id: string) => {
   const response = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
-  const data: any = await response.json();
+  const data: CoinInfo = await response.json();
   return data;
 };
 

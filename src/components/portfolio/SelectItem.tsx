@@ -29,4 +29,6 @@ const SelectItem = forwardRef<HTMLLIElement, SelectItemProps>(
   },
 );
 
+SelectItem.displayName = "SelectItem";
+
 export default SelectItem;

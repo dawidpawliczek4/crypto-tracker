@@ -1,8 +1,6 @@
 import React from "react";
 
-interface HeaderProps {}
-
-const Header: React.FC<HeaderProps> = ({}) => {
+const Header: React.FC = ({}) => {
   const global_marketcap = "$2.11T";
   const percent_change = 0.5;
 
@@ -12,8 +10,8 @@ const Header: React.FC<HeaderProps> = ({}) => {
         Today's Cryptocurrency Prices by Market Cap
       </h1>
       <p className="text-sm text-gray-400">
-        The global crypto market cap is{" "}
-        <span className="font-semibold">{global_marketcap}</span>, a{" "}
+        The global crypto market cap is
+        <span className="font-semibold">{global_marketcap}</span>, a
         <span
           className={
             percent_change < 0
@@ -24,13 +22,10 @@ const Header: React.FC<HeaderProps> = ({}) => {
           }
         >
           {percent_change}%
-        </span>{" "}
+        </span>
         decrease over the last day.
-         {/* <span className="underline text-gray-500">Read More</span> */}
       </p>
-      <div className="flex justify-between">
-
-      </div>
+      <div className="flex justify-between"></div>
     </div>
   );
 };

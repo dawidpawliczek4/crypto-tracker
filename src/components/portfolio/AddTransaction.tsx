@@ -17,10 +17,16 @@ const AddTransaction: React.FC = ({}) => {
 
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState("bitcoin");
-  const handleTransaction = () => {
-    addCoin(id, quantity);
-    toast.success("Transaction added");
+  
+  const handleTransaction = async () => {
+    try {
+      await addCoin(id, quantity);
+      toast.success("Transaction added");
+    } catch (error) {
+      toast.error("Failed to add transaction");
+    }
   };
+
   return (
     <div className="flex w-full justify-end">
       <Dialog.Root>
