@@ -17,7 +17,7 @@ const AddTransaction: React.FC = ({}) => {
 
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState("bitcoin");
-  
+
   const handleTransaction = async () => {
     try {
       await addCoin(id, quantity);
@@ -42,7 +42,7 @@ const AddTransaction: React.FC = ({}) => {
               Add transaction
             </Dialog.Title>
             <Dialog.Description className="mb-5 mt-[10px] text-[15px] leading-normal text-mauve11">
-              Make changes to your transaction here. Click save when you're
+              Make changes to your transaction here. Click save when you&apos;re
               done.
             </Dialog.Description>
             <fieldset className="mb-[15px] flex items-center gap-5">

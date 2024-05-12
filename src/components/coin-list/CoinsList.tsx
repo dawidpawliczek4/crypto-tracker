@@ -18,7 +18,7 @@ const CoinsList: React.FC = () => {
       const response = await fetch(
         "/api/coins"
       );
-      const data: CoinType[] = await response.json();
+      const data: CoinType[] = (await response.json()) as CoinType[];
       setCoins(data);
     };
     fetchCoins()

@@ -7,7 +7,7 @@ const Header: React.FC = ({}) => {
   return (
     <div className="w-full max-w-[1600px] px-24 py-4 text-left">
       <h1 className="text-2xl font-semibold">
-        Today's Cryptocurrency Prices by Market Cap
+        Today&apos;s Cryptocurrency Prices by Market Cap
       </h1>
       <p className="text-sm text-gray-400">
         The global crypto market cap is

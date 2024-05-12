@@ -26,7 +26,7 @@ const CoinDetailsPage: React.FC<CoinDetailsPageProps> = async ({ params }) => {
 
 const fetchCoinInfo = async (id: string) => {
   const response = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
-  const data: CoinInfo = await response.json();
+  const data: CoinInfo = (await response.json()) as CoinInfo;
   return data;
 };
 
