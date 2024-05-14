@@ -10,8 +10,8 @@ const Header: React.FC = ({}) => {
         Today&apos;s Cryptocurrency Prices by Market Cap
       </h1>
       <p className="text-sm text-gray-400">
-        The global crypto market cap is
-        <span className="font-semibold">{global_marketcap}</span>, a
+        The global crypto market cap is{" "}
+        <span className="font-semibold">{global_marketcap}</span>, a{" "}
         <span
           className={
             percent_change < 0
@@ -22,8 +22,8 @@ const Header: React.FC = ({}) => {
           }
         >
           {percent_change}%
-        </span>
-        decrease over the last day.
+        </span>{" "}
+        change over the last day.
       </p>
       <div className="flex justify-between"></div>
     </div>

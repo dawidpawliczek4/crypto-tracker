@@ -13,7 +13,7 @@ interface PortfolioCoinProps {
 const PortfolioCoin: React.FC<PortfolioCoinProps> = ({ id, quantity }) => {
   const { coins } = useCoin();
   const coin = coins.find((coin) => coin.id === id);
-  if (!coin) return null;
+  if (!coin) return <div>No coin</div>;
 
   const handleDelete = async () => {
     await deleteCoin(coin.id);

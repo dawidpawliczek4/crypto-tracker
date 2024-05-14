@@ -8,7 +8,10 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const theme = createTheme({
+const theme = createTheme({  
+  palette: {
+    mode: "dark",
+  },
   typography: {
     fontFamily: roboto.style.fontFamily,
   },

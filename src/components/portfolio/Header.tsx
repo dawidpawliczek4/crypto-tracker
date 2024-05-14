@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import Sum from "./Sum";
 
@@ -12,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ portfolioCoins }) => {
   return (
     <div className="w-1/3">
       <p className="text-gray-300">Dawid Pawliczek</p>
-      <Sum portfolioCoins={portfolioCoins} />
+      <Sum portfolioCoins={portfolioCoins} />     
     </div>
   );
 };

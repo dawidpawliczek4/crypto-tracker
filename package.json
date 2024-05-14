@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
     "@mui/material-nextjs": "^5.15.11",
+    "@mui/x-charts": "^7.4.0",
     "@prisma/client": "^5.12.1",
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-dialog": "^1.0.5",
