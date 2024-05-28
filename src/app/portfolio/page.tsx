@@ -17,9 +17,7 @@ const page: React.FC = async () => {
         </div>
         <div className="flex w-screen flex-row items-start gap-x-4">
           <div>
-            <PortfolioChart 
-              portfolioCoins={portfolioCoins}
-            />
+            <PortfolioChart portfolioCoins={portfolioCoins} />
           </div>
           <div className="flex w-2/3 flex-col gap-6">
             <p className="border-b-[1px] border-b-white/30 pb-2 text-xl">
@@ -29,7 +27,7 @@ const page: React.FC = async () => {
               <PortfolioCoin
                 id={coin.coinId}
                 quantity={coin.quantity}
-                key={coin.coinId}                
+                key={coin.coinId}
               />
             ))}
           </div>

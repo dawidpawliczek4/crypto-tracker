@@ -1,8 +1,9 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { editCoin } from "~/server/queries";
+import { addTransaction } from "~/server/queries";
 import { toast } from "sonner";
+import useCoin from "~/providers/useCoin";
 
 interface EditPortfolioCoinProps {
   quantityOld: number;
@@ -14,15 +15,25 @@ const EditPortfolioCoin: React.FC<EditPortfolioCoinProps> = ({
   id,
 }) => {
   const [quantity, setQuantity] = useState(quantityOld);
+  const { coins } = useCoin();
   const handleTransaction = async () => {
-    await editCoin(id, quantity);
-    toast.success("Transaction saved");
+    const price = coins.find((coin) => coin.id === id)?.current_price;
+    if (!price) {
+      toast.error("Coin not found");
+      return;
+    }
+    try {
+      await addTransaction(id, quantity, price);
+      toast.success("Transaction added");
+    } catch (error: any) {
+      toast.error(error.message);
+    }
   };
 
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <span className="">Edit</span>
+        <span className="">+</span>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-seco fixed inset-0 bg-blackA6 data-[state=open]:animate-overlayShow" />

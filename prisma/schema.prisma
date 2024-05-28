@@ -15,21 +15,44 @@ datasource db {
 }
 
 model Coin {
-  id   String @id @default(cuid())    
+  id String @id @default(cuid())
 
-  coinId   String
   quantity Float
 
+  createdAt DateTime @default(now())
+
   userId String
-  user   User   @relation(fields: [userId], references: [clerkId])
+  coinId String
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  @@unique([coinId, userId])
 }
 
 model User {
   id String @id @default(cuid())
 
   clerkId String @unique
-  coins   Coin[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  coins        Coin[]
+  transactions Transaction[]
+}
+
+model Transaction {
+  id String @id @default(cuid())
+
+  userId   String
+  coinId   String
+  quantity Float
+  price    Float
+  type     String
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  coin Coin @relation(fields: [coinId], references: [id], onDelete: Cascade)
 }

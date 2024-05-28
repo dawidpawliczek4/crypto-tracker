@@ -7,7 +7,7 @@ import {
   ChevronUpIcon,
   Cross2Icon,
 } from "@radix-ui/react-icons";
-import { addCoin } from "~/server/queries";
+import { addTransaction } from "~/server/queries";
 import useCoin from "~/providers/useCoin";
 import SelectItem from "./SelectItem";
 import { toast } from "sonner";
@@ -15,15 +15,25 @@ import { toast } from "sonner";
 const AddTransaction: React.FC = ({}) => {
   const { coins } = useCoin();
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState("");
   const [id, setId] = useState("bitcoin");
 
   const handleTransaction = async () => {
+    const price = coins.find((coin) => coin.id === id)?.current_price;
+    if (!price) {
+      toast.error("Coin not found");
+      return;
+    }
     try {
-      await addCoin(id, quantity);
+      const quantityParsed = parseFloat(quantity);
+      if (isNaN(quantityParsed)) {
+        toast.error("Invalid quantity");
+        return;
+      } 
+      await addTransaction(id, quantityParsed, price);
       toast.success("Transaction added");
-    } catch (error) {
-      toast.error("Failed to add transaction");
+    } catch (error: any) {
+      toast.error(error.message);
     }
   };
 
@@ -95,7 +105,7 @@ const AddTransaction: React.FC = ({}) => {
                 type="number"
                 step="0.0000000001"
                 value={quantity}
-                onChange={(e) => setQuantity(parseFloat(e.target.value))}                
+                onChange={(e) => setQuantity(e.target.value)}
               />
             </fieldset>
             <div className="mt-[25px] flex justify-end">
