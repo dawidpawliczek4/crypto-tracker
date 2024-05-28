@@ -18,7 +18,7 @@ model Coin {
   id   String @id @default(cuid())    
 
   coinId   String
-  quantity Int
+  quantity Float
 
   userId String
   user   User   @relation(fields: [userId], references: [clerkId])

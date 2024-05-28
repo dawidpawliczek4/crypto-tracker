@@ -29,7 +29,7 @@ const page: React.FC = async () => {
               <PortfolioCoin
                 id={coin.coinId}
                 quantity={coin.quantity}
-                key={coin.coinId}
+                key={coin.coinId}                
               />
             ))}
           </div>

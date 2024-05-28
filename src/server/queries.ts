@@ -68,7 +68,6 @@ export const addCoin = async (coinId: string, quantity: number) => {
   revalidatePath("/portfolio");
 };
 
-
 export const deleteCoin = async (coinId: string) => {
   const user = await authorizeUser();
 
@@ -77,7 +76,31 @@ export const deleteCoin = async (coinId: string) => {
       coinId: coinId,
       userId: user.userId,
     },
-  });  
+  });
 
   revalidatePath("/portfolio");
-}
+};
+
+export const editCoin = async (coinId: string, quantity: number) => {
+  const user = await authorizeUser();
+
+  const coin = await prisma.coin.findFirst({
+    where: {
+      coinId: coinId,
+      userId: user.userId,
+    },
+  });
+
+  if (!coin) throw new Error("Coin not found");
+
+  await prisma.coin.update({
+    where: {
+      id: coin.id,
+    },
+    data: {
+      quantity,
+    },
+  });
+
+  revalidatePath("/portfolio");
+};

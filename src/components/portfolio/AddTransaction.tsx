@@ -93,9 +93,9 @@ const AddTransaction: React.FC = ({}) => {
                 className="inline-flex h-[35px]  w-full flex-1 items-center justify-center rounded-[4px] bg-slate-900 px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] shadow-mauve11 outline-none focus:shadow-[0_0_0_2px]"
                 id="username"
                 type="number"
+                step="0.0000000001"
                 value={quantity}
-                onChange={(e) => setQuantity(parseInt(e.target.value))}
-                defaultValue="1"
+                onChange={(e) => setQuantity(parseFloat(e.target.value))}                
               />
             </fieldset>
             <div className="mt-[25px] flex justify-end">
